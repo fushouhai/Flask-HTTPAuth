@@ -15,8 +15,7 @@ from flask import request, make_response, session
 from werkzeug.datastructures import Authorization
 
 __version__ = '3.2.1'
-
-
+# HTTPAuth这个类本身不会被直接使用，用到的是基本类型、摘要类型或者其他
 class HTTPAuth(object):
     def __init__(self, scheme=None, realm=None):
         self.scheme = scheme
