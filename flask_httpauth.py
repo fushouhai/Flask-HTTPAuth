@@ -53,7 +53,8 @@ class HTTPAuth(object):
 
     def authenticate_header(self):
         return '{0} realm="{1}"'.format(self.scheme, self.realm)
-
+    
+    #login_required这个修饰器的作用就是验证用户名和密码
     def login_required(self, f):
         @wraps(f)
         def decorated(*args, **kwargs):
