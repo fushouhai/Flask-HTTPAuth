@@ -32,7 +32,8 @@ class HTTPAuth(object):
 
         self.get_password(default_get_password)
         self.error_handler(default_auth_error)
-
+    
+    #函数注册
     def get_password(self, f):
         self.get_password_callback = f
         return f
@@ -41,7 +42,7 @@ class HTTPAuth(object):
         @wraps(f)
         def decorated(*args, **kwargs):
             res = f(*args, **kwargs)
-            res = make_response(res)
+            res = make_response(res)# make_response?
             if res.status_code == 200:
                 # if user didn't set status code, use 401
                 res.status_code = 401
@@ -57,7 +58,7 @@ class HTTPAuth(object):
     def login_required(self, f):
         @wraps(f)
         def decorated(*args, **kwargs):
-            auth = request.authorization
+            auth = request.authorization# request?
             if auth is None and 'Authorization' in request.headers:
                 # Flask/Werkzeug do not recognize any authentication types
                 # other than Basic or Digest, so here we parse the header by
