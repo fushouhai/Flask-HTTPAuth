@@ -59,7 +59,8 @@ class HTTPAuth(object):
         @wraps(f)
         def decorated(*args, **kwargs):
             auth = request.authorization# request?
-            if auth is None and 'Authorization' in request.headers:#我怀疑 request.headers 是原始数据，
+            if auth is None and 'Authorization' in request.headers:
+                #我怀疑 request.headers 是原始数据，
                 #而request.authorization是Flask/Wer...解析后的数据，因为下文中所提到的原因，导致原始数据在前者中没能解析出来。
                 #以上部分完全是猜想，在学习Flask源码时，加以论证！
                 # Flask/Werkzeug do not recognize any authentication types
