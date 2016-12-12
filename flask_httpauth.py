@@ -127,6 +127,8 @@ class HTTPBasicAuth(HTTPAuth):
             client_password = ""
         if self.verify_password_callback:
             return self.verify_password_callback(username, client_password)
+        #实际上，如果注册了verify_password,程序到此就结束了
+        #**********************#
         if not auth:
             return False
         if self.hash_password_callback:
